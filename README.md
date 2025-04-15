@@ -1,6 +1,6 @@
-# a note program
+# Note Program
 
-## For Running
+## For running
 
 ```sh
 docker-compose up -d --build
