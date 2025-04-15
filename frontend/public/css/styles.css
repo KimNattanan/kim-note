@@ -1,0 +1,200 @@
+* {
+  font-family: 'Noto Serif JP';
+}
+
+body{
+  display: flex;
+  margin: 0;
+  background-color: rgb(191, 178, 173);
+  min-height: 100vh;
+}
+
+body > #left-tab{
+  min-width: 30%;
+  max-width: 30%;
+  box-sizing: border-box;
+  padding: 20px;
+  background-color: rgb(91, 67, 59);
+  margin: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 100vh;
+}
+
+body > #right-tab{
+  flex-grow: 1;
+  background-color: rgb(213, 194, 187);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 100vh;
+  box-sizing: border-box;
+  padding-left: 4rem;
+  padding-top: 4rem;
+  padding-right: 4rem;
+  transition: all cubic-bezier(0,1,0,1) 500ms;
+}
+body > #right-tab > textarea{
+  width: 100%;
+  min-height: 90%;
+  resize: none;
+  background-color: transparent;
+  border: none;
+  font-family: 'Noto Sans JP';
+  font-size: large;
+  field-sizing: content;
+  outline: none;
+}
+
+.note-title, .create-note{
+  cursor: default;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  transition: all cubic-bezier(0,0.5,0.5,1) 500ms;
+  color: white;
+}
+.note-title{
+  background-color: rgb(191, 178, 173);
+  border-left: solid 8px rgba(101, 0, 0, 0.7);
+  border-right: solid 8px rgba(85, 0, 0, 0.7);
+  border-top: solid 4px rgba(0, 14, 70, 0.5);
+  display: flex;
+  align-items: center;
+}
+.note-title > .title{
+  cursor: default;
+  flex-grow: 1;
+  margin-left: 20px;
+  margin-right: 10px;
+  width: 100%;
+  min-height: 0;
+  field-sizing: content;
+  resize: none;
+  background-color: transparent;
+  border: none;
+  font-family: 'Marcellus';
+  font-weight: 900;
+  color: rgb(83, 58, 71);
+  outline: none;
+  transition: all cubic-bezier(0,0.5,0.5,1) 500ms;
+  display: inline;
+}
+
+/* .note-title.selected{
+  background-color: rgb(255, 255, 255);
+  border-left: solid 8px rgba(27, 27, 27, 0.9);
+  border-right: solid 8px rgba(27, 27, 27, 0.9);
+  border-top: solid 4px rgba(54, 54, 54, 0.7);
+}
+.note-title.selected > .title{
+  color: rgb(0,0,0);
+  font-size: medium;
+} */
+.note-title.selected{
+  background-color: rgb(255, 255, 255);
+  border-left: solid 8px rgba(255, 46, 94, 0.9);
+  border-right: solid 8px rgba(255, 46, 94, 0.9);
+  border-top: solid 4px rgba(235, 145, 196, 0.9);
+}
+.note-title.selected > .title{
+  color: rgb(213, 0, 71);
+  font-size: large;
+  letter-spacing: 0.12rem;
+}
+
+.note-title > .panel{
+  display: flex;
+  opacity: 0;
+  align-items: center;
+  transition: linear 70ms;
+}
+.note-title:hover > .panel{
+  opacity: 1;
+}
+.note-title > .panel > .rename, .note-title > .panel > .delete{
+  margin-left: 5px;
+  margin-right: 5px;
+  transition: linear 70ms;
+}
+.note-title > .panel > .rename:hover, .note-title > .panel > .delete:hover{
+  scale: 1.3;
+}
+.note-title > .panel > .rename > img, .note-title > .panel > .delete > img {
+  aspect-ratio: 1;
+  height: 20px;
+}
+
+.create-note{
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transform-origin: left center;
+}
+.note-title:hover{
+  scale: 1.05;
+  margin-top: 13px;
+  margin-bottom: 13px;
+}
+.create-note:hover{
+  scale: 1.2;
+  margin-top: 13px;
+  margin-bottom: 13px;
+}
+
+#error-container{
+  cursor: default;
+  background-color: rgb(155,50,80);
+  color: rgba(240,240,255,0.8);
+  padding: 1rem;
+  border-top: solid 4px rgba(0,0,0,0.5);
+  list-style: none;
+}
+
+#save-btn{
+  cursor: default;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  right: 0;
+  height: 2rem;
+  width: fit-content;
+  padding-left: 2rem;
+  padding-right: 1.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  background-color: rgb(211, 128, 174);
+  border-right: 0.3rem solid rgba(83, 64, 51, 0.5);
+  border-bottom: 0.3rem solid rgba(83, 64, 51, 0.5);
+  border-bottom-left-radius: 20px;
+  color: rgb(255, 243, 252);
+  margin-top: 1rem;
+  margin-right: 2rem;
+  font-family: 'Marcellus';
+  font-size: x-large;
+  font-weight: 900;
+  letter-spacing: 0.5rem;
+  transition: all cubic-bezier(0,0.5,0.5,1) 200ms;
+  user-select: none;
+}
+#save-btn:hover{
+  background-color: rgb(224, 171, 200);
+}
+#save-btn:active{
+  background-color: rgb(224, 171, 200);
+  transform: translateY(0.2rem);
+  border-bottom: 0.1rem solid rgba(83, 64, 51, 0.5);
+  border-right: 0.1rem solid rgba(83, 64, 51, 0.5);
+  transition: all cubic-bezier(0,1,0,1) 500ms;
+}
+
+.hidden{
+  display: none;
+}
+.transparent{
+  opacity: 0;
+}
